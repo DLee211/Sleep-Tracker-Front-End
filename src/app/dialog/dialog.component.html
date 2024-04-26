@@ -1,19 +1,22 @@
 <h1 mat-dialog-title>Add Sleep Data</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="outline">
+  <mat-form-field  appearance="outline">
     <mat-label>Date</mat-label>
-    <input matInput type="date" placeholder="Placeholder">
+    <input matInput [matDatepicker]="picker"  placeholder="Date">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Hours</mat-label>
-    <input matInput type="number" min="1" max="12" placeholder="Placeholder">
+    <input matInput type="number" min="1" max="12" placeholder="Hours">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Minutes</mat-label>
-    <input matInput type="number" min="0" max="60" placeholder="Placeholder">
+    <input matInput type="number" min="0" max="60" placeholder="Minutes">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Notes</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Notes">
   </mat-form-field>
 </div>

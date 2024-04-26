@@ -13,6 +13,11 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +36,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatFormField,
     MatInput,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDatepickerModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule
   ],
   providers: [
     provideClientHydration(),
