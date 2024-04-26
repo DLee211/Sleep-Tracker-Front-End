@@ -1,9 +1,19 @@
-<h1 mat-dialog-title>Add Product Form</h1>
+<h1 mat-dialog-title>Add Sleep Data</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="outline">
-    <mat-label>Outline form field</mat-label>
+    <mat-label>Date</mat-label>
+    <input matInput type="date" placeholder="Placeholder">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Hours</mat-label>
+    <input matInput type="number" min="1" max="12" placeholder="Placeholder">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Minutes</mat-label>
+    <input matInput type="number" min="0" max="60" placeholder="Placeholder">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Notes</mat-label>
     <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
   </mat-form-field>
 </div>
