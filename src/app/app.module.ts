@@ -16,6 +16,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CdTimerModule } from 'angular-cd-timer';
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CdTimerModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

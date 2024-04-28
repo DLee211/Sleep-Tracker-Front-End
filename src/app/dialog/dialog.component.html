@@ -9,14 +9,17 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Hours</mat-label>
-    <input matInput type="number" min="1" max="12" placeholder="Hours">
+    <input matInput type="number" min="1" max="12" placeholder="Hours" [formControl]="hoursControl">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Minutes</mat-label>
-    <input matInput type="number" min="0" max="60" placeholder="Minutes">
+    <input matInput type="number" min="0" max="60" placeholder="Minutes" [formControl]="minutesControl">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Notes</mat-label>
     <input matInput placeholder="Notes">
   </mat-form-field>
+  Timer:
+  <cd-timer #basicTimer></cd-timer>
+  <button  mat-flat-button (click)="stopTimer()">Stop Timer</button>
 </div>
