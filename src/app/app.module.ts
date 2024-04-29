@@ -18,6 +18,7 @@ import {MatNativeDateModule} from '@angular/material/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdTimerModule } from 'angular-cd-timer';
 import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     MatNativeDateModule,
     CdTimerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

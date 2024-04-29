@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CdTimerComponent } from 'angular-cd-timer';
-import { FormControl } from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validator, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -14,6 +14,24 @@ export class DialogComponent {
   minutesControl = new FormControl();
   seconds = 0;
   timerId: any;
+
+  sleepForm !: FormGroup;
+
+  constructor(private formBuilder : FormBuilder) {
+  }
+
+  ngOnInit() {
+    this.sleepForm = this.formBuilder.group({
+      date: ['', Validators.required],
+      hours: ['', [Validators.required, Validators.min(0), Validators.max(12)]],
+      minutes: ['',[Validators.required, Validators.min(0), Validators.max(60)]],
+      notes: ['',Validators.required]
+    });
+  }
+
+  addSleepForm(){
+    console.log(this.sleepForm.value);
+  }
 
   ngAfterViewInit() {
     // Start the timer when the component is initialized
