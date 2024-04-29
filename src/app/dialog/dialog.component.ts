@@ -23,13 +23,15 @@ export class DialogComponent {
   ngOnInit() {
     this.sleepForm = this.formBuilder.group({
       date: ['', Validators.required],
-      hours: ['', [Validators.required, Validators.min(0), Validators.max(12)]],
-      minutes: ['',[Validators.required, Validators.min(0), Validators.max(60)]],
-      notes: ['',Validators.required]
+      hours: [0, [Validators.required, Validators.pattern(/^\d+$/)]],
+      minutes: [0, [Validators.required, Validators.pattern(/^\d+$/)]],
+      notes: ['', Validators.required]
     });
   }
 
   addSleepForm(){
+    const formValue = this.sleepForm.value;
+    formValue.date = new Date(formValue.date).toISOString();
     console.log(this.sleepForm.value);
   }
 
@@ -51,7 +53,6 @@ export class DialogComponent {
     // Calculate hours and minutes from seconds
     const hours = Math.floor(this.seconds / 3600);
     const minutes = Math.floor((this.seconds % 3600) / 60);
-
     this.hoursControl.setValue(hours);
     this.minutesControl.setValue(minutes);
   }
