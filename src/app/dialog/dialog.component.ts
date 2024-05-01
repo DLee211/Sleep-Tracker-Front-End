@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CdTimerComponent } from 'angular-cd-timer';
 import {FormControl, FormGroup, FormBuilder, Validator, Validators} from '@angular/forms';
+import {ApiService} from "../services/api.service";
 
 @Component({
   selector: 'app-dialog',
@@ -17,7 +18,7 @@ export class DialogComponent {
 
   sleepForm !: FormGroup;
 
-  constructor(private formBuilder : FormBuilder) {
+  constructor(private formBuilder : FormBuilder, private api : ApiService){
   }
 
   ngOnInit() {
@@ -32,7 +33,16 @@ export class DialogComponent {
   addSleepForm(){
     const formValue = this.sleepForm.value;
     formValue.date = new Date(formValue.date).toISOString();
-    console.log(this.sleepForm.value);
+    if(this.sleepForm.valid){
+      this.api.postSleepData(formValue).subscribe({
+        next: (res)=>{
+          alert("Data added successfully");
+        },
+        error: (err)=>{
+          console.log(err);
+        }
+      })
+    }
   }
 
   ngAfterViewInit() {

@@ -20,7 +20,6 @@ import { CdTimerModule } from 'angular-cd-timer';
 import {ReactiveFormsModule} from "@angular/forms";
 import {FormsModule} from "@angular/forms";
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +43,8 @@ import {FormsModule} from "@angular/forms";
     MatNativeDateModule,
     CdTimerModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
