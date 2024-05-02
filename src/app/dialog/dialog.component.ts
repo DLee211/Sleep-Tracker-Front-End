@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CdTimerComponent } from 'angular-cd-timer';
 import {FormControl, FormGroup, FormBuilder, Validator, Validators} from '@angular/forms';
 import {ApiService} from "../services/api.service";
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
@@ -18,7 +19,7 @@ export class DialogComponent {
 
   sleepForm !: FormGroup;
 
-  constructor(private formBuilder : FormBuilder, private api : ApiService){
+  constructor(private formBuilder : FormBuilder, private api : ApiService, private dialogRef : MatDialogRef<DialogComponent>){
   }
 
   ngOnInit() {
@@ -37,6 +38,8 @@ export class DialogComponent {
       this.api.postSleepData(formValue).subscribe({
         next: (res)=>{
           alert("Data added successfully");
+          this.sleepForm.reset();
+          this.dialogRef.close();
         },
         error: (err)=>{
           console.log(err);
