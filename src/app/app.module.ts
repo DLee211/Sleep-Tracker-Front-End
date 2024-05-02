@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdTimerModule } from 'angular-cd-timer';
 import {ReactiveFormsModule} from "@angular/forms";
 import {FormsModule} from "@angular/forms";
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginator} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {FormsModule} from "@angular/forms";
     CdTimerModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginator
   ],
   providers: [
     provideClientHydration(),
