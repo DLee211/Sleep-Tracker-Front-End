@@ -20,7 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class AppComponent implements OnInit{
   title = 'Sleep-Tracker-Front-End';
-  displayedColumns: string[] = ['Date', 'Hours', 'Minutes', 'Notes'];
+  displayedColumns: string[] = ['Date', 'Hours', 'Minutes', 'Notes','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
