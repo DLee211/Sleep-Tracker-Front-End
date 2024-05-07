@@ -1,16 +1,17 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import {Component, ViewChild, AfterViewInit, Inject, OnInit} from '@angular/core';
 import { CdTimerComponent } from 'angular-cd-timer';
 import {FormControl, FormGroup, FormBuilder, Validator, Validators} from '@angular/forms';
 import {ApiService} from "../services/api.service";
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
   @ViewChild('basicTimer') basicTimer!: CdTimerComponent;
+  actionBtn: string = "Save"
   timerValue = new FormControl();
   hoursControl = new FormControl();
   minutesControl = new FormControl();
@@ -19,7 +20,7 @@ export class DialogComponent {
 
   sleepForm !: FormGroup;
 
-  constructor(private formBuilder : FormBuilder, private api : ApiService, private dialogRef : MatDialogRef<DialogComponent>){
+  constructor(private formBuilder : FormBuilder, private api : ApiService, @Inject(MAT_DIALOG_DATA) public editData:any, private dialogRef : MatDialogRef<DialogComponent>){
   }
 
   ngOnInit() {
@@ -29,22 +30,34 @@ export class DialogComponent {
       minutes: [0, [Validators.required, Validators.pattern(/^\d+$/)]],
       notes: ['', Validators.required]
     });
+    if(this.editData) {
+      this.actionBtn = "Update"
+      this.sleepForm.controls['date'].setValue(new Date(this.editData.date));
+      this.sleepForm.controls['hours'].setValue(this.editData.hours);
+      this.sleepForm.controls['minutes'].setValue(this.editData.minutes);
+      this.sleepForm.controls['notes'].setValue(this.editData.notes);
+    }
   }
 
   addSleepForm(){
-    const formValue = this.sleepForm.value;
-    formValue.date = new Date(formValue.date).toISOString();
-    if(this.sleepForm.valid){
-      this.api.postSleepData(formValue).subscribe({
-        next: (res)=>{
-          alert("Data added successfully");
-          this.sleepForm.reset();
-          this.dialogRef.close();
-        },
-        error: (err)=>{
-          console.log(err);
-        }
-      })
+    if(!this.editData){
+      const formValue = this.sleepForm.value;
+      formValue.date = new Date(formValue.date).toISOString();
+      if(this.sleepForm.valid){
+        this.api.postSleepData(formValue).subscribe({
+          next: (res)=>{
+            alert("Data added successfully");
+            this.sleepForm.reset();
+            this.dialogRef.close();
+          },
+          error: (err)=>{
+            console.log(err);
+          }
+        })
+      }
+    }
+    else{
+      this.updateSleepForm();
     }
   }
 
@@ -73,5 +86,19 @@ export class DialogComponent {
   resetTimer() {
     this.stopTimer();
     this.seconds = 0;
+  }
+
+  updateSleepForm() {
+    this.api.updateSleepData(this.sleepForm.value, this.editData.id).subscribe({
+      next: (res)=>{
+        alert("Data updated successfully");
+        this.sleepForm.reset();
+        this.dialogRef.close('Update');
+      },
+      error: (err)=>{
+        console.log(err);
+        console.log(this.sleepForm.value);
+      }
+    })
   }
 }

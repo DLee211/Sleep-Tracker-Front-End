@@ -36,7 +36,10 @@ export class AppComponent implements OnInit{
   openDialog() {
     this.dialog.open(DialogComponent, {
       width:'30%'
-    });
+    }).afterClosed().subscribe(val=> {
+      this.GetAllSleepData();
+
+    })
   }
 
   GetAllSleepData()
@@ -57,7 +60,21 @@ export class AppComponent implements OnInit{
     this.dialog.open(DialogComponent, {
       width: '30%',
       data: row
-    });
+    }).afterClosed().subscribe(val=> {
+      this.GetAllSleepData();
+    })
+  }
+
+  deleteSleepData(id: number){
+    this.api.deleteSleepData(id).subscribe({
+      next: (res)=>{
+        alert("Data deleted successfully");
+        this.GetAllSleepData();
+      },
+      error: (err)=>{
+        console.log(err);
+      }
+    })
   }
 
   applyFilter(event: Event) {
