@@ -1,27 +1,31 @@
-# SleepTrackerFrontEnd
+# Sleep Logger App
+This application allows users to log their sleep data either manually or using a timer. It is built with Angular for the frontend and integrates with the Sleep Tracker WebApi for backend functionalities.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+## Features
+1. Log sleep time manually or using a timer.
+2. Filter records by type and/or date.
+3. Pagination for sleep records list.
+4. Integration with Sleep Tracker WebApi for data storage.
+5. User-friendly UI with Angular Material components.
 
-## Development server
+## Technologies Used
+1. Angular: Frontend framework for building the user interface.
+2. Angular Material: UI component library for Angular applications.
+3. Sleep Tracker WebApi: Backend API for handling sleep data.
+4. Database: SQL Server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation
+1. Clone the repository
+2. Navigate to the frontend folder
+3. Install dependencies: npm install
+4. Start the Angular development server: ng serve
+5. Navigate to page.
 
-## Code scaffolding
+## Backend Setup
+Ensure you have the Sleep Tracker WebApi project set up and running. Follow the steps below:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone the Sleep Tracker WebApi repository
+2. Open the backend solution in Visual Studio or your preferred IDE.
+3. Configure the database connection in appsettings.json.
+4. Run the database migrations to create the necessary tables.
+5. Start the Sleep Tracker WebApi server.
