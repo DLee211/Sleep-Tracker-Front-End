@@ -1,5 +1,5 @@
 # Sleep Logger App
-This Angular-based application allows users to log their sleep data either manually or using a timer. It is built with Angular for the frontend and integrates with the (Sleep Tracker WebApi)[https://github.com/DLee211/Sleep-Tracker-WebApi] for backend functionalities.
+This Angular-based application allows users to log their sleep data either manually or using a timer. It is built with Angular for the frontend and integrates with the [Sleep Tracker WebApi](https://github.com/DLee211/Sleep-Tracker-WebApi) for backend functionalities.
 
 ## Features
 1. Log sleep time manually or using a timer.
